@@ -19,22 +19,19 @@
         #header {
             height: 10%;
             width: 100%;
-            background-image: url('https://46gensen.github.io/GENSEN-RADIREQ/title_back.png'); /* 背景画像を追加 */
-            background-size: cover; /* 画像をカバーする */
-            background-position: center; /* 画像の位置を中央に設定 */
+            background-color: #ffffff; /* 背景を白に設定 */
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between; /* ハンバーガーメニューを右端に配置 */
+            padding: 0 10px; /* パディングを追加して余白を作る */
         }
-        h1 {
-            border: 2px solid white; /* 白い枠を追加 */
-            padding: 5px; /* 内側の余白を追加 */
+        #header h1 {
+            margin: 0; /* デフォルトのマージンを削除 */
         }
         #hamburger {
-            border: 2px solid white; /* 白い枠を追加 */
-            padding: 5px; /* 内側の余白を追加 */
-            background-color: #f1f1f1; /* 背景色を設定 */
-            border-radius: 5px; /* 角を丸くする */
+            cursor: pointer;
+            font-size: 24px;
+            color: black; /* ハンバーガーメニューの色を黒に設定 */
         }
         #menu_area {
             position: fixed;

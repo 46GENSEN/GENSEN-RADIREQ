@@ -19,22 +19,27 @@
         #header {
             height: 10%;
             width: 100%;
+            background-image: url('https://46gensen.github.io/GENSEN-RADIREQ/title_back.png'); /* 背景画像を設定 */
+            background-size: cover; /* 画像をカバーする */
+            background-position: center; /* 画像の位置を中央に設定 */
             display: flex;
             align-items: center;
             justify-content: space-between; /* ハンバーガーメニューを右端に配置 */
             padding: 0 10px; /* パディングを追加して余白を作る */
         }
-        #header h1 {
-            background-color: #ffffff; /* h1の背景を白に設定 */
+        .header-content {
+            background-color: rgba(255, 255, 255, 0.8); /* 白い背景を半透明で設定 */
             padding: 5px; /* 内側の余白を追加 */
+            border-radius: 5px; /* 角を丸くするオプション */
+        }
+        #header h1 {
             margin: 0; /* デフォルトのマージンを削除 */
         }
         #hamburger {
             cursor: pointer;
             font-size: 24px;
-            background-color: #ffffff; /* ハンバーガーメニューの背景を白に設定 */
+            background-color: rgba(255, 255, 255, 0.8); /* ハンバーガーメニューの背景を半透明の白に設定 */
             padding: 5px; /* 内側の余白を追加 */
-            margin-left: auto; /* 左側の余白を自動で調整 */
         }
         #menu_area {
             position: fixed;
@@ -161,7 +166,9 @@
 </head>
 <body>
     <div id="header">
-        <h1>GENSENラジリク</h1>
+        <div class="header-content">
+            <h1>GENSENラジリク</h1>
+        </div>
         <div id="hamburger" onclick="toggleMenu()">☰</div>
     </div>
     

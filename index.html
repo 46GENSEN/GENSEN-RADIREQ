@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENSENラジリク</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        #header {
+            height: 10%;
+            width: 100%;
+            background-color: #f1f1f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #hamburger {
+            cursor: pointer;
+            margin-left: auto; /* 右端に配置 */
+            font-size: 24px; /* サイズ調整 */
+        }
+        #input_form {
+            position: absolute;
+            top: 10%;
+            right: 5%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none; /* 初期状態は非表示 */
+            z-index: 1000; /* 最前面にするためのz-index */
+        }
+        #drag_area {
+            height: 30%;
+            width: 100%;
+            display: flex;
+            position: relative;
+        }
+        #drag_area_left, #drag_area_center, #drag_area_right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #drag_area_left {
+            width: 10%;
+        }
+        #drag_area_center {
+            width: 80%;
+            display: flex;
+            align-items: flex-start; /* 上詰めに変更 */
+            justify-content: flex-start; /* 左詰めに変更 */
+            flex-direction: row; /* 横並びにする */
+            flex-wrap: wrap; /* 改行を可能にする */
+            background-image: url('your-image-url.jpg'); /* 背景画像のURLを指定 */
+            background-size: cover; /* 画像をカバーする */
+            background-position: center; /* 画像の位置を中央に設定 */
+        }
+        #drag_area_right {
+            width: 10%;
+        }
+        .draggableText {
+            border: 1px solid #ccc;
+            padding: 1px;
+            cursor: move;
+            user-select: none;
+            margin: 1px; /* テキスト間の余白 */
+            text-align: center; /* 中央揃え */
+            display: inline-block; /* コンテンツに合わせて幅を調整 */
+        }
+        #browser_area {
+            height: 60%;
+            width: 100%;
+            display: flex;
+        }
+        #main_area {
+            height: 100%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+        }
+        #ad_area_left, #ad_area_right {
+            height: 100%;
+            width: 10%;
+            background-color: #e0e0e0;
+            writing-mode: vertical-rl; /* 縦書きに設定 */
+            text-align: center; /* 中央揃え */
+            display: flex;
+            align-items: center; /* 垂直方向の中央揃え */
+            justify-content: center; /* 水平方向の中央揃え */
+        }
+        #introduction_area {
+            height: 17%;
+            width: 100%;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #iframe_area {
+            height: 83%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>GENSENラジリク</h1>
+    <div id="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+    
+    <div id="input_form" style="display: none;">
+        <form id="form" style="display: flex; flex-direction: row;">
+            <div style="width: 50%; display: flex; flex-direction: column;">
+                <label for="inputText">ラジオネーム:<br>メールアドレス:<br>性:<br>名:<br>First Name:<br>アーティスト名:<br>Artist Name:<br>曲名:<br>Song title:</label>
+            </div>
+            <div style="width: 50%; display: flex; flex-direction: column;">
+                <textarea id="inputText" name="inputText" rows="9" style="flex: 1; margin-bottom: 10px;"></textarea>
+            </div>
+        </form>
+        <button type="button" onclick="submitForm()">更新</button>
+    </div>      
+    
+    <div id="drag_area">
+        <div id="drag_area_left">
+            <button id="button_left" onclick="prevList()">前へ</button>
+        </div>
+        <div id="drag_area_center">
+            <div id="text1" class="draggableText" draggable="true">テキスト1-1</div>
+            <div id="text2" class="draggableText" draggable="true">テキスト1-2</div>
+            <div id="text3" class="draggableText" draggable="true">テキスト1-3</div>
+            <div id="text4" class="draggableText" draggable="true">テキスト1-1</div>
+            <div id="text5" class="draggableText" draggable="true">テキスト1-2</div>
+            <div id="text6" class="draggableText" draggable="true">テキスト1-3</div>
+            <div id="text7" class="draggableText" draggable="true">テキスト1-1</div>
+            <div id="text8" class="draggableText" draggable="true">テキスト1-2</div>
+            <div id="text9" class="draggableText" draggable="true">テキスト1-3</div>
+            <div id="text10" class="draggableText" draggable="true">テキスト1-1</div>
+            <div id="text11" class="draggableText" draggable="true">テキスト1-2</div>
+            <div id="text12" class="draggableText" draggable="true">テキスト1-3</div>
+            <div id="text13" class="draggableText" draggable="true">テキスト1-1</div>
+            <div id="text14" class="draggableText" draggable="true">テキスト1-2</div>
+            <div id="text15" class="draggableText" draggable="true">テキスト1-3</div>
+        </div>
+        <div id="drag_area_right">
+            <button id="button_right" onclick="nextList()">次へ</button>
+        </div>
+    </div>
+
+    <div id="browser_area">
+        <div id="ad_area_left"><h2>＃おひさまジョイラ</h2></div>
+        
+        <div id="main_area">
+            <div id="introduction_area">導入エリア</div>
+            <div id="iframe_area">
+                <iframe id="iframe" src="https://ssl.1242.com/aplform/form/aplform.php?fcode=m10" width="100%" height="100%" frameborder="0"></iframe>
+            </div>
+        </div>
+
+        <div id="ad_area_right"><h2>#AteezXSakurazaka46</h2></div>
+    </div>
+
+    <script>
+        // 変数
+        let radioname = "ラジオネーム";
+        let mailaddress = "メールアドレス";
+        let familyname = "性";
+        let firstname = "名";
+        let firstname_en = "first name";
+        let artistname = "アーティスト名";
+        let artistname_en = "artist name";
+        let songtitle1 = "曲1";
+        let songtitle1_en = "SONG1";
+        let slash = "/";
+        let data = [
+            {
+                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress],
+                introduction: "オールナイトニッポンMusic10",
+                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
+                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
+            },
+            {
+                texts: [radioname, artistname, songtitle1],
+                introduction: "HITS! THE TOWN（NACK5）",
+                iframeURL: "https://www.nack5.co.jp/message/270/",
+                backgroundImage: "url('image2.jpg')"
+            },
+            {
+                texts: [radioname, songtitle1+slash+artistname],
+                introduction: "Good Luck Mornig!（NACK5）",
+                iframeURL: "https://www.nack5.co.jp/message/53/",
+                backgroundImage: "url('image3.jpg')"
+            },
+            {
+                texts: [radioname, songtitle1+slash+artistname],
+                introduction: "GOGOMONZ（NACK5）",
+                iframeURL: "https://www.nack5.co.jp/message/2125/",
+                backgroundImage: "url('image4.jpg')"
+            },
+            {
+                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
+                introduction: "WPVR NYC",
+                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
+                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
+            },
+            {
+                texts: [artistname_en, songtitle1_en],
+                introduction: "OK Asia",
+                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSe1yaIX9vTlkW8uVFqkF4ElCrsJ4R131b5lOQx7PlmwzYIaPg/viewform",
+                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
+            },
+            {
+                texts: [songtitle1_en+slash+artistname_en],
+                introduction: "HOT106",
+                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
+                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
+            }
+        ];
+        
+        let currentListIndex = 0; // 現在のリストのインデックス
+    
+        // 初期テキストを設定
+        updateContent();
+    
+        // 各テキストにドラッグイベントを追加
+        document.querySelectorAll('.draggableText').forEach((element) => {
+            element.addEventListener('dragstart', (event) => {
+                event.dataTransfer.setData('text/plain', event.target.innerText);
+            });
+        });
+    
+        function nextList() {
+            currentListIndex = (currentListIndex + 1) % data.length; // 次のリストインデックスを計算
+            updateContent(); // コンテンツを更新
+        }
+    
+        function prevList() {
+            currentListIndex = (currentListIndex - 1 + data.length) % data.length; // 前のリストインデックスを計算
+            updateContent(); // コンテンツを更新
+        }
+    
+        function updateContent() {
+            const draggableTexts = document.querySelectorAll('.draggableText');
+            draggableTexts.forEach((element, index) => {
+                if (index < data[currentListIndex].texts.length) {
+                    element.innerText = data[currentListIndex].texts[index]; // 各テキストを更新
+                    element.style.display = 'block'; // 表示
+                } else {
+                    element.style.display = 'none'; // 非表示
+                }
+            });
+    
+            // 導入エリアとiframeのURLも更新
+            document.getElementById("introduction_area").innerText = data[currentListIndex].introduction; // 導入エリアを更新
+            document.getElementById("iframe").src = data[currentListIndex].iframeURL; // iframeのURLを更新
+    
+            // 背景画像を更新
+            document.getElementById("drag_area_center").style.backgroundImage = data[currentListIndex].backgroundImage;
+        }
+    
+        function toggleMenu() {
+            const form = document.getElementById("input_form");
+            form.style.display = (form.style.display === "none" || form.style.display === "") ? "block" : "none";
+        }
+    
+        function submitForm() {
+            const inputText = document.getElementById("inputText").value.split('\n'); // テキストエリアの内容を行ごとに分割
+            
+            if (inputText.length >= 9) {
+                radioname = inputText[0]; // 1行目をradionameに格納
+                mailaddress = inputText[1]; // 2行目をmailaddressに格納
+                familyname = inputText[2]; // 3行目をfamilynameに格納
+                firstname = inputText[3]; // 4行目をfirstnameに格納
+                firstname_en = inputText[4]; // 5行目をfirstname_enに格納
+                artistname = inputText[5]; // 6行目をartistnameに格納
+                artistname_en = inputText[6]; // 7行目をartistname_enに格納
+                songtitle1 = inputText[7]; // 8行目をsongtitle1に格納
+                songtitle1_en = inputText[8]; // 9行目をsongtitle1_enに格納
+                
+                
+                // 各データセットのtextsを更新
+                data[0].texts = [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress]; // 最初のデータを更新
+                data[1].texts = [radioname, artistname, songtitle1]; // 2つ目のデータも更新
+                data[2].texts = [radioname, songtitle1+slash+artistname]; // 3つ目のデータも更新
+                data[3].texts = [radioname, songtitle1+slash+artistname]; // 4つ目のデータも更新
+                data[4].texts = [mailaddress, firstname_en, artistname_en, songtitle1_en]; // 5つ目のデータを更新
+                data[5].texts = [artistname_en, songtitle1_en]; // 6つ目のデータを更新
+                data[6].texts = [songtitle1_en+slash+artistname_en]; // 7つ目のデータを更新
+                
+                updateContent(); // コンテンツを更新
+            } else {
+                alert("すべての行を入力してください。");
+            }
+        }
+    </script>       
+</body>
+</html>

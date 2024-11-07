@@ -44,18 +44,18 @@
         }
         #input_form {
             width: 100%;
-            height: 50%;
+            height: 30%;
             background-color: #fff;
             padding: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         #link_area {
             width: 100%;
-            height: 40%;
+            height: 60%; /* 高さを指定 */
             background-color: #e0e0e0;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column; /* 縦並びに設定 */
+            overflow-y: auto; /* 縦方向のスクロールを有効に */
         }
         #drag_area {
             height: 20%;
@@ -150,7 +150,13 @@
         </div>
         <div id="link_area">
             <!-- リンクエリアの内容をここに追加 -->
-            <p>リンクエリア</p>
+            <h2>操作説明</h2>
+            <ol>
+                <li>上記フォームに、必要事項を入力し、更新を押す</li>
+                <li>テキストを長押し</li>
+                <li>ドラッグを維持しながら、リクエストフォームをタップ</li>
+                <li>入力フォームの上でドロップ</li>
+            </ol>
         </div>
     </div>
 

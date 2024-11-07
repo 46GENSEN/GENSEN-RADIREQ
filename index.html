@@ -19,19 +19,22 @@
         #header {
             height: 10%;
             width: 100%;
-            background-color: #ffffff; /* 背景を白に設定 */
             display: flex;
             align-items: center;
             justify-content: space-between; /* ハンバーガーメニューを右端に配置 */
             padding: 0 10px; /* パディングを追加して余白を作る */
         }
         #header h1 {
+            background-color: #ffffff; /* h1の背景を白に設定 */
+            padding: 5px; /* 内側の余白を追加 */
             margin: 0; /* デフォルトのマージンを削除 */
         }
         #hamburger {
             cursor: pointer;
             font-size: 24px;
-            color: black; /* ハンバーガーメニューの色を黒に設定 */
+            background-color: #ffffff; /* ハンバーガーメニューの背景を白に設定 */
+            padding: 5px; /* 内側の余白を追加 */
+            margin-left: auto; /* 左側の余白を自動で調整 */
         }
         #menu_area {
             position: fixed;

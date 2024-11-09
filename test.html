@@ -152,12 +152,26 @@
             align-items: center; /* 垂直方向の中央揃え */
             justify-content: center; /* 水平方向の中央揃え */
         }
+        #ad_area_left, #ad_area_right {
+            height: 100%;
+            width: 10%;
+            background-color: #fef9fb;
+            writing-mode: vertical-rl;
+            text-align: center;
+            display: flex;
+            align-items: center; /* 縦方向の中央揃え */
+            justify-content: center; /* 水平方向の中央揃え */
+            position: relative; /* 相対位置に設定 */
+            overflow: hidden; /* オーバーフローを隠す */
+        }
         .scroll-text {
             position: absolute; /* 絶対位置で配置 */
             width: 100%; /* 幅を100%に設定 */
             animation: scroll-text 10s linear infinite; /* スクロールアニメーションを適用 */
+            display: flex; /* フレックスボックスで配置 */
+            align-items: center; /* 縦方向の中央揃え */
+            justify-content: center; /* 水平方向の中央揃え */
         }
-
         @keyframes scroll-text {
             0% {
                 transform: translateY(100%); /* 初期位置を下に設定 */
@@ -165,11 +179,6 @@
             100% {
                 transform: translateY(-100%); /* 最終位置を上に設定 */
             }
-        }
-
-        #ad_area_left, #ad_area_right {
-            position: relative; /* 相対位置に設定 */
-            overflow: hidden; /* オーバーフローを隠す */
         }
         #introduction_area {
             height: 14%;

@@ -588,10 +588,19 @@
             updateContent(); // コンテンツを更新
         }
     
+        let isSubmitted = false; // 送信フラグ
+
         function submitForm() {
             const inputText = document.getElementById("inputText").value.split('\n'); // テキストエリアの内容を行ごとに分割
+
+            if (inputText.length >= 10) {
+                if (isSubmitted) {
+                    alert("2回目の更新は行えません。ページをリロードしてお試しください。");
+                    return; // 2回目以降の処理を中止
+                }
+
+                isSubmitted = true; // 送信フラグを立てる
             
-            if (inputText.length >= 9) {
                 radioname = inputText[0]; // 1行目をradionameに格納
                 mailaddress = inputText[1]; // 2行目をmailaddressに格納
                 familyname = inputText[2]; // 3行目をfamilynameに格納

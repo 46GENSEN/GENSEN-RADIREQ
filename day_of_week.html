@@ -1,4 +1,3 @@
-#一番最後に消す処理
 <!DOCTYPE html>
 <html lang="ja">
 <head  prefix="og: https://ogp.me/ns#">
@@ -64,7 +63,7 @@
         }
         #input_form {
             width: 100%;
-            height: 50%;
+            height: 45%;
             background-color: #fff;
             padding: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -72,7 +71,7 @@
         }
         #link_area {
             width: 100%;
-            height: 40%; /* 高さを指定 */
+            height: 45%; /* 高さを指定 */
             background-color: #e0e0e0;
             display: flex;
             flex-direction: column; /* 縦並びに設定 */
@@ -153,6 +152,35 @@
             align-items: center; /* 垂直方向の中央揃え */
             justify-content: center; /* 水平方向の中央揃え */
         }
+        #ad_area_left, #ad_area_right {
+            height: 100%;
+            width: 10%;
+            background-color: #fef9fb;
+            writing-mode: vertical-rl;
+            text-align: center;
+            display: flex;
+            align-items: center; /* 縦方向の中央揃え */
+            justify-content: center; /* 水平方向の中央揃え */
+            position: relative; /* 相対位置に設定 */
+            overflow: hidden; /* オーバーフローを隠す */
+        }
+        .scroll-text {
+            position: absolute; /* 絶対位置で配置 */
+            white-space: nowrap; /* 折り返さない */
+            width: 100%; /* 幅を100%に設定 */
+            animation: scroll-text 20s linear infinite; /* スクロールアニメーションを適用  時間設定*/
+            display: flex; /* フレックスボックスで配置 */
+            align-items: center; /* 縦方向の中央揃え */
+            justify-content: center; /* 水平方向の中央揃え */
+        } 
+        @keyframes scroll-text {
+            0% {
+                transform: translateY(100%); /* 初期位置を下に設定 */
+            }
+            100% {
+                transform: translateY(-100%); /* 最終位置を上に設定 */
+            }
+        }
         #introduction_area {
             height: 14%;
             width: 100%;
@@ -201,7 +229,7 @@
         <div id="input_form">
             <form id="form" style="display: flex; flex-direction: row;">
                 <div style="width: 50%; display: flex; flex-direction: column;">
-                    <label for="inputText">ラジオネーム:<br>メールアドレス:<br>性:<br>名:<br>First Name:<br>アーティスト名:<br>Artist Name:<br>曲名:<br>Song title:</label>
+                    <label for="inputText">ラジオネーム:<br>メールアドレス:<br>性:<br>名:<br>First Name:<br>アーティスト名:<br>Artist Name:<br>曲名:<br>Song title:<br>市町村区:</label>
                 </div>
                 <div style="width: 50%; display: flex; flex-direction: column;">
                     <textarea id="inputText" name="inputText" rows="9" style="flex: 1; margin-bottom: 10px;"></textarea>
@@ -213,7 +241,7 @@
             <!-- リンクエリアの内容をここに追加 -->
             <h2>操作説明</h2>
             <ol>
-                <li>上記フォームに、必要事項を入力し、更新を押す</li>
+                <li>上記フォームに、必要事項を入力し、更新を押す（10行埋めてください。書きたくない場合は、空白でも可。）</li>
                 <li>テキストを長押し</li>
                 <li>ドラッグを維持しながら、リクエストフォームをタップ</li>
                 <li>入力フォームの上でドロップ</li>
@@ -249,7 +277,11 @@
     </div>
 
     <div id="browser_area">
-        <div id="ad_area_left"><h2>＃充電ピッカーン！</h2></div>
+        <div id="ad_area_left">
+            <div class="scroll-text">
+                <h2>#GENSENラジリク　　　　　　　　　#櫻坂46_ラジオリクエスト　　　　　　　　　#こんなぎをラヴィットへ</h2>
+            </div>
+        </div>
         
         <div id="main_area">
             <div id="introduction_area">導入エリア</div>
@@ -258,15 +290,20 @@
             </div>
         </div>
 
-        <div id="ad_area_right"><h2>#AteezXSakurazaka46</h2></div>
+        <div id="ad_area_right">
+            <div class="scroll-text">
+                <h2>スポンサー大募集中！！！　　　　　　　　　　　　　　　　　　　　　　　拡散してもらえると嬉しいです！</h2>
+            </div>
+        </div>
     </div>
 
     <div class="space_area"></div>
     
     <div class="share_area">
-        <img src="https://46gensen.github.io/GENSEN-RADIREQ/x_share.jpg" alt="画像1" onclick="window.location.href='https://twitter.com/intent/tweet?text=GENSEN%E3%83%A9%E3%82%B8%E3%83%AA%E3%82%AF%E3%81%A7%E3%83%A9%E3%82%B8%E3%82%AA%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%81https%3A%2F%2F46gensen.github.io%2FGENSEN-RADIREQ%2F%0A%23GENSEN%E3%83%A9%E3%82%B8%E3%83%AA%E3%82%AF'">
-        <div class="line-it-button" data-lang="ja" data-type="share-a" data-env="REAL" data-url="https://46gensen.github.io/GENSEN-RADIREQ/" data-color="default" data-size="large" data-count="false" data-ver="3" style="display: none;"></div>
+        <img src="https://46gensen.github.io/GENSEN-RADIREQ/x_share.jpg" alt="Xシェアリンク" onclick="window.location.href='https://twitter.com/intent/tweet?text=GENSEN%E3%83%A9%E3%82%B8%E3%83%AA%E3%82%AF%E3%81%A7%E3%83%A9%E3%82%B8%E3%82%AA%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%97%E3%81%BE%E3%81%97%E3%81%9F%EF%BC%81https%3A%2F%2F46gensen.github.io%2FGENSEN-RADIREQ%2F%0A%23GENSEN%E3%83%A9%E3%82%B8%E3%83%AA%E3%82%AF'">
+        <div class="line-it-button" data-lang="ja" data-type="share-b" data-env="REAL" data-url="https://46gensen.github.io/GENSEN-RADIREQ/" data-color="default" data-size="small" data-count="false" data-ver="3" style="display: none;"></div>
         <script src="https://www.line-website.com/social-plugins/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+        <img src="https://46gensen.github.io/GENSEN-RADIREQ/opinion.jpg" alt="ご意見ご要望" onclick="window.location.href='https://www.ninjar.jp/users/46gensen/themes/new'">
     </div>
 
     <script>
@@ -281,288 +318,200 @@
         let songtitle1 = "曲1";
         let songtitle1_en = "SONG1";
         let slash = "/";
-        let data_sun = [
+        let data = [
             {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "sun"],
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
                 introduction: "オールナイトニッポンMusic10",
                 iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
                 backgroundImage: "url('image1.jpg')"
             },
             {
-                texts: [radioname, artistname, songtitle1],
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
                 introduction: "HITS! THE TOWN（NACK5）",
                 iframeURL: "https://www.nack5.co.jp/message/270/",
                 backgroundImage: "url('image2.jpg')"
             },
             {
-                texts: [radioname, songtitle1+slash+artistname],
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
                 introduction: "Good Luck Mornig!（NACK5）",
                 iframeURL: "https://www.nack5.co.jp/message/53/",
                 backgroundImage: "url('image3.jpg')"
             },
             {
-                texts: [radioname, songtitle1+slash+artistname],
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
                 introduction: "GOGOMONZ（NACK5）",
                 iframeURL: "https://www.nack5.co.jp/message/2125/",
                 backgroundImage: "url('image4.jpg')"
             },
             {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
                 introduction: "WPVR NYC",
                 iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
+                backgroundImage: "url('image5.jpg')"
             },
             {
-                texts: [songtitle1_en+slash+artistname_en],
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
                 introduction: "HOT106",
                 iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
+                backgroundImage: "url('image6.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "ゲツモク",
+                iframeURL: "https://fmmie.jp/program/getsumoku/message.php",
+                backgroundImage: "url('image7.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "シャカリキ",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2776/",
+                backgroundImage: "url('image8.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Wave!!!!",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2626/",
+                backgroundImage: "url('image9.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss Music Presenter",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/3/",
+                backgroundImage: "url('image10.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "ENERGY FRIDAY !!!",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2778/",
+                backgroundImage: "url('image11.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Viva la radio",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/1840/",
+                backgroundImage: "url('image12.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss Music Presenter FRIDAY",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2770/",
+                backgroundImage: "url('image13.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Saturday Junction",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2628/",
+                backgroundImage: "url('image14.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Yakult1000Music",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2779/",
+                backgroundImage: "url('image15.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "椿ここのここいいね！",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2786/",
+                backgroundImage: "url('image16.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "LiVE MAX presents YUSUKE YAMAMOTO moving on",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2249/",
+                backgroundImage: "url('image17.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "神戸マツダ presents ドライブSHOW!!",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2232/",
+                backgroundImage: "url('image18.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "山岸久朗のコレってどうなんですか！？",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2795/",
+                backgroundImage: "url('image19.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "ネッツトヨタ兵庫 Presents 麻田キョウヤのFriday Night Drivin'",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/1675/",
+                backgroundImage: "url('image20.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "ヒマワリらじお",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/1716/",
+                backgroundImage: "url('image21.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "大阪芸短 presents ハイスクールノオト",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/1319/",
+                backgroundImage: "url('image22.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "純喫茶 山石",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/1220/",
+                backgroundImage: "url('image23.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "中村だいすけの【真夜中の心理学】",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2791/",
+                backgroundImage: "url('image24.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "アフター 純喫茶 山石",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2560/",
+                backgroundImage: "url('image25.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss FM HOME DOCTOR（月）",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/436/",
+                backgroundImage: "url('image26.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss FM HOME DOCTOR（火）",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2603/",
+                backgroundImage: "url('image27.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss FM HOME DOCTOR（水）",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2604/",
+                backgroundImage: "url('image28.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss FM HOME DOCTOR（木）",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/2605/",
+                backgroundImage: "url('image29.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "Kiss デンタルヘルスレポート",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/1713/",
+                backgroundImage: "url('image30.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "森下仁丹 presents バイオRadio！",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/185/",
+                backgroundImage: "url('image31.jpg')"
+            },
+            {
+                texts: ["まず、右上の☰を押してください", "このサイトは、ドラッグ＆ドロップでフォーム入力できるサイトです"],
+                introduction: "バンディ's What's Going On!",
+                iframeURL: "https://www.kiss-fm.co.jp/requestmessage/request/81/",
+                backgroundImage: "url('image32.jpg')"
+            },
         ];
-
-        let data_mon = [
-            {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "mon"],
-                introduction: "オールナイトニッポンMusic10",
-                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
-                backgroundImage: "url('image1.jpg')"
-            },
-            {
-                texts: [radioname, artistname, songtitle1],
-                introduction: "HITS! THE TOWN（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/270/",
-                backgroundImage: "url('image2.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "Good Luck Mornig!（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/53/",
-                backgroundImage: "url('image3.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "GOGOMONZ（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/2125/",
-                backgroundImage: "url('image4.jpg')"
-            },
-            {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
-                introduction: "WPVR NYC",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            },
-            {
-                texts: [songtitle1_en+slash+artistname_en],
-                introduction: "HOT106",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
-        ];
-
-        let data_tue = [
-            {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "tue"],
-                introduction: "オールナイトニッポンMusic10",
-                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
-                backgroundImage: "url('image1.jpg')"
-            },
-            {
-                texts: [radioname, artistname, songtitle1],
-                introduction: "HITS! THE TOWN（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/270/",
-                backgroundImage: "url('image2.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "Good Luck Mornig!（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/53/",
-                backgroundImage: "url('image3.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "GOGOMONZ（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/2125/",
-                backgroundImage: "url('image4.jpg')"
-            },
-            {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
-                introduction: "WPVR NYC",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            },
-            {
-                texts: [songtitle1_en+slash+artistname_en],
-                introduction: "HOT106",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
-        ];
-
-        let data_wed = [
-            {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "wed"],
-                introduction: "オールナイトニッポンMusic10",
-                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
-                backgroundImage: "url('image1.jpg')"
-            },
-            {
-                texts: [radioname, artistname, songtitle1],
-                introduction: "HITS! THE TOWN（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/270/",
-                backgroundImage: "url('image2.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "Good Luck Mornig!（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/53/",
-                backgroundImage: "url('image3.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "GOGOMONZ（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/2125/",
-                backgroundImage: "url('image4.jpg')"
-            },
-            {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
-                introduction: "WPVR NYC",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            },
-            {
-                texts: [songtitle1_en+slash+artistname_en],
-                introduction: "HOT106",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
-        ];
-
-        let data_thu = [
-            {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "thu"],
-                introduction: "オールナイトニッポンMusic10",
-                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
-                backgroundImage: "url('image1.jpg')"
-            },
-            {
-                texts: [radioname, artistname, songtitle1],
-                introduction: "HITS! THE TOWN（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/270/",
-                backgroundImage: "url('image2.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "Good Luck Mornig!（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/53/",
-                backgroundImage: "url('image3.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "GOGOMONZ（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/2125/",
-                backgroundImage: "url('image4.jpg')"
-            },
-            {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
-                introduction: "WPVR NYC",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            },
-            {
-                texts: [songtitle1_en+slash+artistname_en],
-                introduction: "HOT106",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
-        ];
-
-        let data_fri = [
-            {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "fri"],
-                introduction: "オールナイトニッポンMusic10",
-                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
-                backgroundImage: "url('image1.jpg')"
-            },
-            {
-                texts: [radioname, artistname, songtitle1],
-                introduction: "HITS! THE TOWN（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/270/",
-                backgroundImage: "url('image2.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "Good Luck Mornig!（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/53/",
-                backgroundImage: "url('image3.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "GOGOMONZ（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/2125/",
-                backgroundImage: "url('image4.jpg')"
-            },
-            {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
-                introduction: "WPVR NYC",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            },
-            {
-                texts: [songtitle1_en+slash+artistname_en],
-                introduction: "HOT106",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
-        ];
-
-        let data_sat = [
-            {
-                texts: [songtitle1+slash+artistname, radioname, familyname, firstname, mailaddress, "sat"],
-                introduction: "オールナイトニッポンMusic10",
-                iframeURL: "https://ssl.1242.com/aplform/form/aplform.php?fcode=m10",
-                backgroundImage: "url('image1.jpg')"
-            },
-            {
-                texts: [radioname, artistname, songtitle1],
-                introduction: "HITS! THE TOWN（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/270/",
-                backgroundImage: "url('image2.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "Good Luck Mornig!（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/53/",
-                backgroundImage: "url('image3.jpg')"
-            },
-            {
-                texts: [radioname, songtitle1+slash+artistname],
-                introduction: "GOGOMONZ（NACK5）",
-                iframeURL: "https://www.nack5.co.jp/message/2125/",
-                backgroundImage: "url('image4.jpg')"
-            },
-            {
-                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
-                introduction: "WPVR NYC",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfyVYf-rss5jZ0uA6RHIkb-Im180whM7I_U98HLnpu3w1C4cw/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            },
-            {
-                texts: [songtitle1_en+slash+artistname_en],
-                introduction: "HOT106",
-                iframeURL: "https://docs.google.com/forms/d/e/1FAIpQLSfw02BKZZEk5KQF0uRNWZNHiYly3KocDVChDJsh7ZE_OFxg_A/viewform",
-                backgroundImage: "url('C:/Users/Owner/Pictures/iCloud Photos/Photos/00.png')"
-            }
-        ];
-
-        // 現在の日付を取得
-        const today = new Date();
-        // 曜日を取得（0=日曜日, 1=月曜日, ..., 6=土曜日）
-        const days = [data_sun, data_mon, data_tue, data_wed, data_thu, data_fri, data_sat];
-        const dayOfWeek = days[today.getDay()];
-
-        data = dayOfWeek
-
-
         
         let currentListIndex = 0; // 現在のリストのインデックス
     
@@ -609,6 +558,35 @@
             const menu = document.getElementById("menu_area");
             menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "flex" : "none";
         }
+
+        function removeDataByDay() {
+            const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
+            const currentDay = new Date().getDay(); // 0=日, 1=月, ..., 6=土
+            const dayName = daysOfWeek[currentDay];
+
+            // 曜日ごとに削除する行を指定
+            const rowsToDelete = {
+                '日': [1, 0], // リストは大きい順で
+                '月': [3, 2], // リストは大きい順で
+                '火': [5, 4], // リストは大きい順で
+                '水': [7, 6], // リストは大きい順で
+                '木': [9, 8], // リストは大きい順で
+                '金': [11, 10], // リストは大きい順で
+                '土': [13, 12] // リストは大きい順で
+            };
+
+            // 現在の曜日に基づいて行を削除
+            const rowsToRemove = rowsToDelete[dayName];
+            if (rowsToRemove) {
+                rowsToRemove.forEach(row => {
+                    if (row < data.length) {
+                        data.splice(row, 1); // 指定した行を削除
+                    }
+                });
+            }
+
+            updateContent(); // コンテンツを更新
+        }
     
         function submitForm() {
             const inputText = document.getElementById("inputText").value.split('\n'); // テキストエリアの内容を行ごとに分割
@@ -623,6 +601,7 @@
                 artistname_en = inputText[6]; // 7行目をartistname_enに格納
                 songtitle1 = inputText[7]; // 8行目をsongtitle1に格納
                 songtitle1_en = inputText[8]; // 9行目をsongtitle1_enに格納
+                city = inputText[9]; // 10行目をcityに格納
                 
                 
                 // 各データセットのtextsを更新
@@ -632,8 +611,35 @@
                 data[3].texts = [radioname, songtitle1+slash+artistname]; // 4つ目のデータも更新
                 data[4].texts = [mailaddress, firstname_en, artistname_en, songtitle1_en]; // 5つ目のデータを更新
                 data[5].texts = [songtitle1_en+slash+artistname_en]; // 6つ目のデータを更新
+                data[6].texts = [radioname, songtitle1, artistname, mailaddress, familyname+firstname]; // 7つ目のデータを更新
+                data[7].texts = [radioname, artistname, songtitle1, city]; // 8つ目のデータを更新
+                data[8].texts = [radioname, artistname, songtitle1, city]; // 9つ目のデータを更新
+                data[9].texts = [radioname, artistname, songtitle1, city]; // 10つ目のデータを更新
+                data[10].texts = [radioname, artistname, songtitle1, city]; // 11つ目のデータを更新
+                data[11].texts = [radioname, artistname, songtitle1, city]; // 12つ目のデータを更新
+                data[12].texts = [radioname, artistname, songtitle1, city]; // 13つ目のデータを更新
+                data[13].texts = [radioname, artistname, songtitle1, city]; // 14つ目のデータを更新
+                data[14].texts = [radioname, artistname, songtitle1, city]; // 15つ目のデータを更新
+                data[15].texts = [radioname, artistname, songtitle1, city]; // 16つ目のデータを更新
+                data[16].texts = [radioname, artistname, songtitle1, city]; // 17つ目のデータを更新
+                data[17].texts = [radioname, artistname, songtitle1, city]; // 18つ目のデータを更新
+                data[18].texts = [radioname, artistname, songtitle1, city]; // 19つ目のデータを更新
+                data[19].texts = [radioname, artistname, songtitle1, city]; // 20つ目のデータを更新
+                data[20].texts = [radioname, artistname, songtitle1, city]; // 21つ目のデータを更新
+                data[21].texts = [radioname, artistname, songtitle1, city]; // 22つ目のデータを更新
+                data[22].texts = [radioname, artistname, songtitle1, city]; // 23つ目のデータを更新
+                data[23].texts = [radioname, artistname, songtitle1, city]; // 24つ目のデータを更新
+                data[24].texts = [radioname, artistname, songtitle1, city]; // 25つ目のデータを更新
+                data[25].texts = [radioname, artistname, songtitle1, city]; // 26つ目のデータを更新
+                data[26].texts = [radioname, artistname, songtitle1, city]; // 27つ目のデータを更新
+                data[27].texts = [radioname, artistname, songtitle1, city]; // 28つ目のデータを更新
+                data[28].texts = [radioname, artistname, songtitle1, city]; // 29つ目のデータを更新
+                data[29].texts = [radioname, artistname, songtitle1, city]; // 30つ目のデータを更新
+                data[30].texts = [radioname, artistname, songtitle1, city]; // 31つ目のデータを更新
+                data[31].texts = [radioname, artistname, songtitle1, city]; // 32つ目のデータを更新
                 
                 updateContent(); // コンテンツを更新
+                removeDataByDay()
             } else {
                 alert("すべての行を入力してください。");
             }

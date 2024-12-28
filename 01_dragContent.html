@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENSENラジリク</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* スクロールを無効にする */
+            margin: 0; /* デフォルトのマージンをリセット */
+            padding: 0; /* デフォルトのパディングをリセット */
+        }
+        
+        #drag_area {
+            display: flex;
+            flex-wrap: wrap; /* 要素が行を超えたら折り返す */
+            justify-content: flex-start; /* 左詰めにする */
+            align-items: flex-start; /* 上詰めにする */
+            height: 100%;
+            padding: 10px; /* 内側の余白を追加 */
+            box-sizing: border-box; /* パディングを含めてサイズを計算 */
+        }
+
+        .draggableText {
+            background-color: #fad8f0; /* 背景色を設定 */
+            padding: 5px; /* テキストの周りに余白を追加 */
+            margin: 5px; /* テキストの間にマージンを追加 */
+            border-radius: 5px; /* 角を丸くする */
+            cursor: move; /* ドラッグ可能なカーソルに変更 */
+            white-space: nowrap; /* テキストが折り返さないようにする */
+        }
+    </style>
+</head>
+<body>
+    <div id="drag_area">
+        <div id="text1" class="draggableText" draggable="true">テキスト1-1</div>
+        <div id="text2" class="draggableText" draggable="true">テキスト1-2</div>
+        <div id="text3" class="draggableText" draggable="true">テキスト1-3</div>
+    </div>
+
+    <script>
+        // 変数
+        let radioname = "山田太郎";
+        let mailaddress = "example@example.com";
+        let familyname = "性";
+        let firstname = "太郎";
+        let firstname_en = "Taro";
+        let artistname = "アーティストA";
+        let artistname_en = "Artist A";
+        let songtitle1 = "曲A";
+        let songtitle1_en = "Song A";
+        let slash = "/";
+        let data = [
+            {
+                texts: [songtitle1 + slash + artistname, radioname, familyname, firstname, mailaddress],
+            },
+            {
+                texts: [radioname, artistname, songtitle1],
+            },
+            {
+                texts: [radioname, songtitle1 + slash + artistname],
+            },
+            {
+                texts: [radioname, songtitle1 + slash + artistname],
+            },
+            {
+                texts: [mailaddress, firstname_en, artistname_en, songtitle1_en],
+            },
+            {
+                texts: [songtitle1_en + slash + artistname_en],
+            }
+        ];
+
+        // ファイル名を取得
+        const filename = window.location.pathname.split('/').pop(); // URLのパスからファイル名を取得
+        let indexStr = filename.slice(0, 2); // 最初の2桁を取得
+
+        // 1桁目が0の場合は0を消し、そうでない場合はそのまま使用
+        let currentListIndex = parseInt(indexStr.replace(/^0/, '')) - 1; // 0を消してインデックスを設定（0から始まるため-1）
+
+        // 初期テキストを設定
+        updateContent();
+    
+        // 各テキストにドラッグイベントを追加
+        document.querySelectorAll('.draggableText').forEach((element) => {
+            element.addEventListener('dragstart', (event) => {
+                event.dataTransfer.setData('text/plain', event.target.innerText);
+            });
+        });
+    
+        function nextList() {
+            currentListIndex = (currentListIndex + 1) % data.length; // 次のリストインデックスを計算
+            updateContent(); // コンテンツを更新
+        }
+    
+        function prevList() {
+            currentListIndex = (currentListIndex - 1 + data.length) % data.length; // 前のリストインデックスを計算
+            updateContent(); // コンテンツを更新
+        }
+    
+        function updateContent() {
+            const draggableTexts = document.querySelectorAll('.draggableText');
+            draggableTexts.forEach((element, index) => {
+                if (index < data[currentListIndex].texts.length) {
+                    element.innerText = data[currentListIndex].texts[index]; // 各テキストを更新
+                    element.style.display = 'block'; // 表示
+                } else {
+                    element.style.display = 'none'; // 非表示
+                }
+            });
+        }
+    </script>       
+</body>
+</html>

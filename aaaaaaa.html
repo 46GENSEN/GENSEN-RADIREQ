@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0;url=https://twitter.com/intent/tweet?text=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97">
     <title>リダイレクト中...</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var url = "https://twitter.com/intent/tweet?text=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97";
+            var newWindow = window.open(url, "_blank");
+
+            // 新しいタブで開けなかった場合のフォールバック
+            if (!newWindow || newWindow.closed || typeof newWindow.closed === "undefined") {
+                window.location.href = url;
+            }
+        };
+    </script>
 </head>
 <body>
-    <p>リダイレクト中です。自動的に遷移しない場合は、<a href="https://twitter.com/intent/tweet?text=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97">こちらをクリック</a>してください。</p>
+    <p>リダイレクト中です。自動的に遷移しない場合は、<a href="https://twitter.com/intent/tweet?text=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97" target="_blank">こちらをクリック</a>してください。</p>
 </body>
 </html>

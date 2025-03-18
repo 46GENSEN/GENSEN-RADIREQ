@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>リダイレクト中...</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            var url = "twitter://post?message=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97";
+            var fallbackUrl = "https://twitter.com/intent/tweet?text=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97";
+
+            // X（アプリ版）が起動しない場合、ブラウザ版にフォールバック
+            var newWindow = window.location.href = url;
+
+            setTimeout(function() {
+                // X アプリが起動しなかった場合、ブラウザ版にリダイレクト
+                window.location.href = fallbackUrl;
+            }, 2000); // 2秒待って起動しない場合にフォールバック
+        };
+    </script>
+</head>
+<body>
+    <p>リダイレクト中です。自動的に遷移しない場合は、<a href="https://twitter.com/intent/tweet?text=%E5%B0%8F%E5%B3%B6%E5%87%AA%E7%B4%97" target="_blank">こちらをクリック</a>してください。</p>
+</body>
+</html>
